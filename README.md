@@ -115,6 +115,7 @@ The Commerce PDV ecosystem consists of three main components that work together 
 - 📜 **Terms of Service and Privacy Policy** pages
 - 🎨 **Bootstrap 5** modern UI components
 - ⚡ **Hotwired Stimulus** for reactive interactions
+- 🌐 **Link** https://raulpellizzer.com/
 
 ### CommerceApi (Backend)
 
