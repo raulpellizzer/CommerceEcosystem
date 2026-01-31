@@ -365,7 +365,7 @@ Each component has its own setup process with detailed documentation.
 | **Major Components** | 3 applications |
 | **Programming Languages** | C#, PHP, JavaScript, SQL |
 | **Databases** | MySQL, PostgreSQL |
-| **Architecture Style** | Microservices, Multi-tenant |
+| **Architecture Style** | Multi-tenant |
 | **Supported Platforms** | Windows (Desktop), Web (Cross-platform) |
 | **API Endpoints** | 30+ RESTful endpoints |
 | **Database Tables** | 50+ across all components |
@@ -482,7 +482,7 @@ Full-stack software developer specialized in building scalable, secure business 
 - **Backend**: PHP, C#, .NET, Node.js
 - **Frontend**: WPF, Symfony, Bootstrap, JavaScript
 - **Databases**: MySQL, PostgreSQL
-- **Architecture**: Microservices, Multi-tenant, RESTful APIs
+- **Architecture**: Multi-tenant, RESTful APIs
 - **DevOps**: Docker, CI/CD, Linux server administration
 
 ### Contact
