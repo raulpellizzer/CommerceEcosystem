@@ -9,7 +9,7 @@
 [![MySQL](https://img.shields.io/badge/MySQL-8.0+-4479A1?style=flat&logo=mysql&logoColor=white)](https://www.mysql.com/)
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-14+-336791?style=flat&logo=postgresql&logoColor=white)](https://www.postgresql.org/)
 
-**Commerce PDV** is a complete, production-ready Point of Sale ecosystem designed for retail stores, restaurants, and small businesses. Built with modern technologies and enterprise-grade architecture, it demonstrates advanced full-stack development capabilities including multi-tenant systems, offline-first applications, and secure cloud synchronization.
+**Commerce PDV** is a complete, production-ready Point of Sale ecosystem designed for retail stores and small businesses. Built with modern technologies and enterprise-grade architecture, it demonstrates advanced full-stack development capabilities including multi-tenant systems and secure cloud synchronization.
 
 ---
 
@@ -29,12 +29,11 @@ Commerce PDV is a complete ecosystem for managing sales, inventory, and customer
 
 - **Retail Stores**: Manage products, process sales, track inventory
 - **Small Businesses**: Start free, scale as you grow
-- **Restaurants**: Order management and kitchen integration (planned)
+- **Restaurants**: Order management and kitchen integration (planned - to be implemented)
 - **Multi-location Businesses**: Centralized cloud management
 
 ### Key Value Propositions
 
-✅ **Offline-First**: Continue working even without internet connectivity  
 ✅ **Multi-Tenant**: Secure, isolated data for each customer  
 ✅ **Cloud Sync**: Automatic synchronization across all devices  
 ✅ **Scalable**: From single store to enterprise deployments  
@@ -46,7 +45,6 @@ Commerce PDV is a complete ecosystem for managing sales, inventory, and customer
 This project showcases the ability to architect and implement a complete business solution from the ground up, addressing real-world challenges like:
 
 - Building scalable multi-tenant systems
-- Implementing offline-first applications with conflict resolution
 - Designing secure authentication across multiple platforms
 - Creating seamless integration between web and desktop applications
 - Managing complex data synchronization scenarios
@@ -62,14 +60,16 @@ The Commerce PDV ecosystem consists of three main components that work together 
 │                   End Users                         │
 └──────────┬──────────────────────┬───────────────────┘
            │                      │
-    ┌──────▼──────┐        ┌─────▼──────────┐
-    │ CommerceWeb │        │  CommerceApp   │
-    │  (Portal)   │        │  (Desktop POS) │
-    │             │        │                │
-    │ - Admin     │        │ - Sales        │
-    │ - Reports   │        │ - Inventory    │
-    │ - Users     │        │ - Offline Mode │
-    └──────┬──────┘        └─────┬──────────┘
+    ┌──────▼──────┐        ┌─────▼─────────────┐
+    │ CommerceWeb │        │  CommerceApp      │
+    │  (Portal)   │        │  (Desktop POS)    │
+    │             │        │                   │
+    │ - Admin     │        │ - Sales           │
+    │ - Users     │        │ - Inventory       │
+    │             │        │ - Clients         │  
+    │             │        │ - Reports         │  
+    │             │        │ - Custom Settings │  
+    └──────┬──────┘        └──────┬────────────┘
            │                      │
            │    HTTPS/REST API    │
            └──────────┬───────────┘
@@ -84,8 +84,8 @@ The Commerce PDV ecosystem consists of three main components that work together 
             └─────────┬──────────┘
                       │
             ┌─────────▼──────────┐
-            │    MySQL/PostgreSQL│
-            │    (Databases)     │
+            │   MySQL/PostgreSQL │
+            │   (Databases)      │
             └────────────────────┘
 ```
 
@@ -134,18 +134,14 @@ The Commerce PDV ecosystem consists of three main components that work together 
 ### CommerceApp (Desktop)
 
 - 💰 **Fast sales processing** with barcode scanning support
-- 📦 **Real-time inventory management** with low stock alerts
+- 📦 **Real-time inventory management**
 - 👥 **Customer database** with complete purchase history
 - 📊 **Sales reports and analytics** with custom date ranges
-- 🖨️ **Thermal receipt printing** with customizable templates
-- 💳 **Multiple payment methods** support (cash, credit, debit)
+- 🖨️ **Thermal receipt printing**
+- 💳 **Multiple payment methods** support (cash, credit, debit) - Not integrated with card providers
 - ☁️ **Automatic cloud synchronization** with conflict resolution
 - 🔐 **Encrypted local data storage** for security
 - 🎨 **Modern WPF interface** with MVVM architecture
-- 📱 **Touch-screen friendly** design for POS terminals
-- 🔌 **Offline mode** - continue working without internet
-- 🔄 **Smart sync** - automatic retry and background updates
-- 📈 **Dashboard** with sales metrics and KPIs
 
 ---
 
@@ -156,14 +152,14 @@ The Commerce PDV ecosystem consists of three main components that work together 
 ```
 User Journey:
 1. User visits CommerceWebsite
-2. Registers account (stored in PostgreSQL)
-3. CommerceWebsite calls CommerceApi to create tenant database
+2. Registers account (stored in MySql)
+3. An email is sent to create tenant DB and initial setup
 4. User receives verification email
 5. User downloads CommerceApp installer
 6. User installs desktop application
 7. User logs in (authenticated via CommerceApi)
 8. CommerceApp syncs data with CommerceApi
-9. User processes sales offline/online
+9. User processes sales
 10. Data automatically syncs to cloud via CommerceApi
 11. User views reports on CommerceApp or CommerceWebsite
 ```
@@ -173,7 +169,6 @@ User Journey:
 ```
 ┌──────────────┐
 │ CommerceApp  │
-│ (Local DB)   │
 └──────┬───────┘
        │ Sync Request
        ▼
@@ -263,10 +258,9 @@ User Journey:
 
 ### Authentication & Authorization
 
-- 🔐 **HTTP Basic Authentication** for API requests
-- 🔑 **Bcrypt password hashing** with work factor 12
+- 🔐 **HTTP Basic Authentication** for API requests (JWT planned for future releases)
+- 🔑 **Bcrypt password hashing** with work factor (xx) (hidden for security reasons)
 - ✉️ **Email verification** for new registrations
-- 🎫 **Session management** with secure cookies
 - 🚫 **Rate limiting** on sensitive endpoints
 - 🔄 **JWT tokens** (planned for enhanced security)
 
@@ -274,7 +268,6 @@ User Journey:
 
 - 🔒 **AES-256-GCM encryption** for sensitive email data
 - 🔐 **TLS/HTTPS** for all API communications
-- 💾 **Encrypted local storage** in desktop application
 - 🔑 **Secure key management** with environment variables
 - 🛡️ **SQL injection prevention** via prepared statements
 - 🧹 **Input sanitization** and validation
@@ -314,21 +307,6 @@ User Journey:
 
 ---
 
-### 🍽️ Restaurant
-
-**Scenario**: Quick-service or casual dining establishment
-
-- ✅ Table-based order management (planned)
-- ✅ Kitchen display system integration (planned)
-- ✅ Multiple payment method splitting
-- ✅ Daily sales and menu analytics
-- ✅ Ingredient inventory tracking
-- ✅ Staff performance metrics
-
-**Benefits**: Faster service, reduced errors, improved kitchen efficiency
-
----
-
 ### 🏢 Small Business
 
 **Scenario**: Growing business needing scalable solution
@@ -353,6 +331,7 @@ User Journey:
 1. 🌐 Visit the **Commerce PDV website**
 2. 📝 **Register** for a new account
 3. ✉️ **Verify** your email address
+4. ✉️ **Setup** Wait for initial setup from admin - We will be in touch!
 4. 💳 **Choose** a subscription plan (Free Starter available)
 5. 📥 **Download** the desktop application installer
 6. 💻 **Install** CommerceApp on your Windows PC
@@ -397,63 +376,32 @@ Each component has its own setup process with detailed documentation.
 
 ⚠️ **Important Note**: The individual component repositories are **private** and contain proprietary code. This repository serves as a **portfolio showcase** only.
 
-### Component Repositories
-
-- 🌐 **CommerceWebsite**: *Private repository* - Web portal (Symfony/PHP/PostgreSQL)
-- ⚙️ **CommerceApi**: *Private repository* - REST API backend (PHP/MySQL)
-- 💻 **CommerceApp**: *Private repository* - Desktop POS application (C#/.NET/WPF)
-
 **Contact Information**: For access inquiries or demos, please reach out via email at CommercePDV@raulpellizzer.com
 
 ---
 
 ## 📸 Screenshots
 
-*Screenshots will be added in future updates to maintain privacy and security of the production system.*
+**🏠Landing Page**
+![Commerce Landing Page](Screenshots/LandingPage.png "Commerce Landing Page")
 
-**Planned Screenshots:**
-- 🏠 CommerceWebsite landing page
-- 📝 User registration and subscription flow
-- 💻 CommerceApp main dashboard
-- 📊 Sales reporting interface
-- 📦 Inventory management screen
-- 🖨️ Receipt printing preview
+**💻 CommerceApp main dashboard**
+![CommerceApp main dashboard](Screenshots/MainDashboard.png "CommerceApp main dashboard")
 
----
+**📝 User registration and subscription flow**
+![User registration](Screenshots/UserRegistration.png "User registration")
 
-## 🗺️ Roadmap
+**📦 Inventory management screen**
+![Inventory management](Screenshots/ProductsDashboard.png "Inventory management")
 
-### Version 1.x (Current - Stable)
+**📊 Sales By Client**
+![Sales By Client](Screenshots/SalesByClient.png "Sales By Client")
 
-- ✅ Core POS functionality
-- ✅ Multi-tenant architecture
-- ✅ Cloud synchronization
-- ✅ Basic reporting
-- ✅ User registration and authentication
-- ✅ Subscription management
-- ✅ Offline mode support
+**📊 Sales**
+![Sales](Screenshots/SalesReport.png "Sales")
 
-### Version 2.0 (Planned - Q2 2026)
-
-- [ ] 📱 Mobile companion app (iOS/Android)
-- [ ] 📊 Advanced analytics dashboard
-- [ ] 🧾 Fiscal printer integration (Brazil NFCe/NFe)
-- [ ] 🌍 Multi-language support (PT-BR, EN, ES)
-- [ ] 🌙 Dark mode theme
-- [ ] 📧 Email marketing integration
-- [ ] 📦 Advanced inventory management (stock transfers, suppliers)
-- [ ] 👥 Employee management and permissions
-
-### Version 3.0 (Future - 2027)
-
-- [ ] 🤖 AI-powered inventory forecasting
-- [ ] 💳 Payment gateway integration (Stripe, PayPal, local providers)
-- [ ] 🖥️ Self-service kiosk mode
-- [ ] 🍽️ Restaurant table management system
-- [ ] 🚚 Delivery platform integration (iFood, Uber Eats)
-- [ ] 📈 Business intelligence with ML insights
-- [ ] 🔗 Third-party integrations (accounting, CRM)
-- [ ] ☁️ Multi-cloud deployment options
+**📊 Sales Window**
+![Sales Window](Screenshots/SalesWindow.png "Sales Window")
 
 ---
 
@@ -463,45 +411,35 @@ Each component has its own setup process with detailed documentation.
 
 **1. Multi-Tenant Database Architecture**
 - Dynamic tenant selection based on authentication
-- Automated database provisioning for new customers
-- Schema migration management across hundreds of tenant databases
 - Connection pool optimization for scalability
 
-**2. Offline-First Desktop Application**
-- Complete POS functionality without internet
-- Conflict resolution when syncing offline changes
-- Queue-based synchronization with automatic retry
-- Local SQLite database with encryption
-
-**3. Real-Time Data Synchronization**
+**2. Real-Time Data Synchronization**
 - Bidirectional sync between desktop and cloud
 - Change tracking and delta updates
 - Optimistic locking for concurrent updates
 - Background sync with minimal user interruption
 
-**4. Plan-Based Feature Gating**
+**3. Plan-Based Feature Gating**
 - Dynamic feature access based on subscription tier
 - Graceful degradation when limits reached
 - Usage tracking and quota enforcement
 - Upgrade prompts and seamless plan migration
 
-**5. Email Encryption with Search**
+**4. Email Encryption with Search**
 - AES-256-GCM encryption for email addresses
 - Searchable hash index for lookups
 - Key rotation support
 - GDPR compliance ready
 
-**6. Secure Cross-Platform Authentication**
+**5. Secure Cross-Platform Authentication**
 - Single authentication source (API)
-- Token-based session management
 - Secure credential storage on desktop
-- Automatic re-authentication handling
 
 **7. Scalable REST API**
 - Prepared statements preventing SQL injection
 - Efficient query optimization
 - Response caching strategies
-- Rate limiting and DDoS protection
+- Rate limiting and DDoS protection (To be reviewed)
 
 ---
 
@@ -543,14 +481,16 @@ Full-stack software developer specialized in building scalable, secure business 
 
 - **Backend**: PHP, C#, .NET, Node.js
 - **Frontend**: WPF, Symfony, Bootstrap, JavaScript
-- **Databases**: MySQL, PostgreSQL, SQL Server
+- **Databases**: MySQL, PostgreSQL
 - **Architecture**: Microservices, Multi-tenant, RESTful APIs
 - **DevOps**: Docker, CI/CD, Linux server administration
 
 ### Contact
 
 - 📧 **Email**: CommercePDV@raulpellizzer.com
+- 📧 **Personal Email**: raul1.pellizzer1@gmail.com
 - 🐙 **GitHub**: [@raulpellizzer](https://github.com/raulpellizzer)
+- 🐙 **LinkedIn**: https://www.linkedin.com/in/raul-pellizzer-2297971b0/
 - 💼 **Portfolio**: This repository and others on GitHub
 
 **Open to opportunities** in full-stack development, software architecture, and technical leadership roles.
@@ -586,20 +526,19 @@ This is a proprietary system developed for commercial purposes. The individual c
 - ✅ **Implement enterprise-grade security** with encryption and authentication
 - ✅ **Create scalable multi-tenant architecture** supporting hundreds of customers
 - ✅ **Provide excellent user experience** with modern, intuitive interfaces
-- ✅ **Solve complex technical challenges** (offline sync, multi-tenancy, security)
+- ✅ **Solve complex technical challenges** (multi-tenancy, security, high performance software)
 
 ### Ongoing Objectives 🔄
 
+- 🔄 **Offline Mode** for work without internet connection - auto sync whenever possible
 - 🔄 **Continuously improve and add features** based on user feedback
 - 🔄 **Maintain high code quality** with refactoring and optimization
-- 🔄 **Keep up with modern technologies** and best practices
 - 🔄 **Expand platform support** (mobile, web improvements)
 - 🔄 **Build a sustainable business** around the product
 
 ### Future Vision 🎯
 
 - 🎯 **Help small businesses succeed** with affordable, powerful tools
-- 🎯 **Become a reference solution** in the POS market
 - 🎯 **Foster a community** of users and developers
 - 🎯 **Contribute to open source** where applicable
 - 🎯 **Scale to enterprise** customers with advanced needs
