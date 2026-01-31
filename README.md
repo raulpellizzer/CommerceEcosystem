@@ -198,7 +198,7 @@ User Journey:
 | **APIs** | RESTful API, JSON |
 | **DevOps** | Docker Compose, Git, Composer, NuGet |
 | **Security** | AES-256-GCM encryption, HTTPS/TLS, CSRF protection, Rate limiting |
-| **Architecture** | Multi-tenant, MVVM (desktop), MVC (web/api) |
+| **Architecture** | Three-tier, Multi-tenant, MVVM (desktop), MVC (web/api) |
 
 ---
 
