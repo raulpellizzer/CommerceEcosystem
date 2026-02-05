@@ -37,7 +37,7 @@ Commerce PDV is a complete ecosystem for managing sales, inventory, and customer
 ✅ **Multi-Tenant**: Secure, isolated data for each customer  
 ✅ **Cloud Sync**: Automatic synchronization across all devices  
 ✅ **Scalable**: From single store to enterprise deployments  
-✅ **Secure**: Enterprise-grade security with AES-256 encryption  
+✅ **Secure**: Enterprise-grade security with HMAC signatures, rate limiting, and AES-256 encryption  
 ✅ **Modern Stack**: Built with latest technologies and best practices  
 
 ### Why This Project Matters
@@ -48,6 +48,7 @@ This project showcases the ability to architect and implement a complete busines
 - Designing secure authentication across multiple platforms
 - Creating seamless integration between web and desktop applications
 - Managing complex data synchronization scenarios
+- Implementing enterprise-grade security with HMAC signatures and rate limiting
 
 ---
 
@@ -126,7 +127,11 @@ The Commerce PDV ecosystem consists of three main components that work together 
 - 🎯 **Plan-based feature gating system** enforcing subscription limits
 - 🔧 **Maintenance mode** with debug key override capability
 - 📝 **Comprehensive logging system** for debugging and auditing
-- 🔑 **Cryptographic key management** for secure operations
+- 🔒 **Client Authentication (HMAC-SHA256)**: Cryptographic request signing with API key/secret for tamper-proof API access
+- ⏱️ **Rate Limiting**: 60 requests/minute, 1000 requests/hour per client with configurable limits
+- 📊 **Request Audit Logging**: Complete tracking of all API requests with signature validation status
+- 🛡️ **Replay Attack Prevention**: Timestamp validation within ±5 minute window
+- 🔐 **Multi-layer Authentication**: Client authentication (HMAC) + User authentication (Basic Auth)
 - ⚙️ **Configuration API endpoints** for client applications
 - 💊 **Health check monitoring** for system status
 - 🛡️ **SQL injection prevention** with prepared statements
@@ -142,6 +147,9 @@ The Commerce PDV ecosystem consists of three main components that work together 
 - 💳 **Multiple payment methods** support (cash, credit, debit) - Not integrated with card providers
 - ☁️ **Automatic cloud synchronization** with conflict resolution
 - 🔐 **Encrypted local data storage** for security
+- 🔐 **HMAC Request Signing**: Automatic cryptographic signing of all API requests
+- 🔑 **Secure Credential Storage**: API key/secret configuration management
+- 🛡️ **Request Integrity**: Tamper-proof communication with backend API
 - 🎨 **Modern WPF interface** with MVVM architecture
 
 ---
