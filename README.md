@@ -35,7 +35,7 @@ Commerce PDV is a complete ecosystem for managing sales, inventory, and customer
 ### Key Value Propositions
 
 ✅ **Multi-Tenant**: Secure, isolated data for each customer  
-✅ **Cloud Sync**: Automatic synchronization across all devices  
+✅ **Cloud Sync**: Automatic synchronization across all devices (prototype)
 ✅ **Scalable**: From single store to enterprise deployments  
 ✅ **Secure**: Enterprise-grade security with HMAC signatures, rate limiting, and AES-256 encryption  
 ✅ **Modern Stack**: Built with latest technologies and best practices  
@@ -267,7 +267,7 @@ User Journey:
 
 ### Authentication & Authorization
 
-- 🔐 **HTTP Basic Authentication** for API requests (JWT planned for future releases)
+- 🔐 **HTTP Basic Authentication** for API requests
 - 🔑 **Bcrypt password hashing** with work factor (xx) (hidden for security reasons)
 - ✉️ **Email verification** for new registrations
 - 🚫 **Rate limiting** on sensitive endpoints
@@ -422,29 +422,23 @@ Each component has its own setup process with detailed documentation.
 - Dynamic tenant selection based on authentication
 - Connection pool optimization for scalability
 
-**2. Real-Time Data Synchronization**
-- Bidirectional sync between desktop and cloud
-- Change tracking and delta updates
-- Optimistic locking for concurrent updates
-- Background sync with minimal user interruption
-
-**3. Plan-Based Feature Gating**
+**2. Plan-Based Feature Gating**
 - Dynamic feature access based on subscription tier
 - Graceful degradation when limits reached
 - Usage tracking and quota enforcement
 - Upgrade prompts and seamless plan migration
 
-**4. Email Encryption with Search**
+**3. Email Encryption with Search**
 - AES-256-GCM encryption for email addresses
 - Searchable hash index for lookups
 - Key rotation support
 - GDPR compliance ready
 
-**5. Secure Cross-Platform Authentication**
+**4. Secure Cross-Platform Authentication**
 - Single authentication source (API)
 - Secure credential storage on desktop
 
-**7. Scalable REST API**
+**5. Scalable REST API**
 - Prepared statements preventing SQL injection
 - Efficient query optimization
 - Response caching strategies
@@ -457,7 +451,6 @@ Each component has its own setup process with detailed documentation.
 **Software Engineering:**
 - ✅ **SOLID Principles** - Single responsibility, Open/closed, Liskov substitution, Interface segregation, Dependency inversion
 - ✅ **Design Patterns** - MVVM, MVC, Factory, Repository, Observer, Command
-- ✅ **Dependency Injection** - Loose coupling and testability
 - ✅ **Clean Code** - Meaningful names, small functions, clear intent
 
 **Architecture:**
