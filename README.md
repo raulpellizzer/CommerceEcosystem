@@ -147,7 +147,7 @@ The Commerce PDV ecosystem consists of three main components that work together 
 - 💳 **Multiple payment methods** support (cash, credit, debit) - Not integrated with card providers
 - ☁️ **Automatic cloud synchronization** with conflict resolution
 - 🔐 **Encrypted local data storage** for security
-- 🔐 **HMAC Request Signing**: Automatic cryptographic signing of all API requests
+- ✍️ **HMAC Request Signing**: Automatic cryptographic signing of all API requests
 - 🔑 **Secure Credential Storage**: API key/secret configuration management
 - 🛡️ **Request Integrity**: Tamper-proof communication with backend API
 - 🎨 **Modern WPF interface** with MVVM architecture
